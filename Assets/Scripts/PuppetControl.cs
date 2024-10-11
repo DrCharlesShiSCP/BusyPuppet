@@ -12,11 +12,11 @@ public class PuppetControl : MonoBehaviour
     public GameObject foreArm_L;
 
 
-    [HideInInspector]public float arm_R_Rotation;
-    [HideInInspector] public float foreArm_R_Rotation;
+    public float arm_R_Rotation;
+    public float foreArm_R_Rotation;
 
-    [HideInInspector] public float arm_L_Rotation;
-    [HideInInspector] public float foreArm_L_Rotation;
+    public float arm_L_Rotation;
+    public float foreArm_L_Rotation;
 
     public int arm_L_Index;
     public int foreArm_L_Index;
