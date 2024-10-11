@@ -1244,8 +1244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puppet: {fileID: 1378849892}
   shadow: {fileID: 5282585069270780205}
-  dancer: {fileID: 0}
-  puppetOBJ: {fileID: 0}
+  dancer: {fileID: 1511218186}
+  puppetOBJ: {fileID: 1378849891}
 --- !u!1 &2045746230
 GameObject:
   m_ObjectHideFlags: 0
