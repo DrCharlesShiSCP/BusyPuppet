@@ -24,15 +24,15 @@ public class ShadowControl : MonoBehaviour
             arm_L_Index = Random.Range(0, 3);
             if (arm_L_Index == 0)
             {
-                foreArm_L_Index = Random.Range(0, 5);
+                foreArm_L_Index = Random.Range(0, 4);
             }
             else if (arm_L_Index == 2)
             {
-                foreArm_L_Index = Random.Range(1, 5);
+                foreArm_L_Index = Random.Range(1, 4);
             }
             else
             {
-                foreArm_L_Index = Random.Range(0, 5);
+                foreArm_L_Index = Random.Range(0, 4);
             }
 
             arm_R_Index = Random.Range(0, 3);
@@ -42,11 +42,11 @@ public class ShadowControl : MonoBehaviour
             }
             else if (arm_R_Index == 2)
             {
-                foreArm_R_Index = Random.Range(1, 5);
+                foreArm_R_Index = Random.Range(1, 4);
             }
             else
             {
-                foreArm_R_Index = Random.Range(0, 5);
+                foreArm_R_Index = Random.Range(0, 4);
             }
             UpdateArmRotation();
             UpdateForeArmRotation();
@@ -54,32 +54,25 @@ public class ShadowControl : MonoBehaviour
 
     void Update()
     {
-        // Apply rotations in each frame
-        if (arm_L != null)
-            arm_L.transform.rotation = Quaternion.Euler(new Vector3(arm_L_Rotation, 0, 0));
+        arm_L.transform.rotation = Quaternion.Euler(new Vector3(arm_L_Rotation, 90, 0));
+        foreArm_L.transform.rotation = Quaternion.Euler(new Vector3(foreArm_L_Rotation, 90, 0));
 
-        if (foreArm_L != null)
-            foreArm_L.transform.rotation = Quaternion.Euler(new Vector3(foreArm_L_Rotation, 0, 0));
-
-        if (arm_R != null)
-            arm_R.transform.rotation = Quaternion.Euler(new Vector3(arm_R_Rotation, 0, 0));
-
-        if (foreArm_R != null)
-            foreArm_R.transform.rotation = Quaternion.Euler(new Vector3(foreArm_R_Rotation, 0, 0));
+        arm_R.transform.rotation = Quaternion.Euler(new Vector3(arm_R_Rotation, -90, 0));
+        foreArm_R.transform.rotation = Quaternion.Euler(new Vector3(foreArm_R_Rotation, -90, 0));
+        CheckForeArmPosition();
+        CheckArmPostion();
     }
 
     void UpdateArmRotation()
     {
         arm_L_Rotation = GetArmRotationFromIndex(arm_L_Index);
         arm_R_Rotation = GetArmRotationFromIndex(arm_R_Index);
-        CheckArmPostion();
     }
 
     void UpdateForeArmRotation()
     {
         foreArm_L_Rotation = GetForeArmRotationFromIndex(foreArm_L_Index);
         foreArm_R_Rotation = GetForeArmRotationFromIndex(foreArm_R_Index);
-        CheckForeArmPosition();
     }
 
     float GetArmRotationFromIndex(int index)
@@ -100,8 +93,7 @@ public class ShadowControl : MonoBehaviour
             case 0: return -135;
             case 1: return -90;
             case 2: return -45;
-            case 3: return -30;
-            case 4: return 0;
+            case 3: return 0;
             default: return 0;
         }
     }

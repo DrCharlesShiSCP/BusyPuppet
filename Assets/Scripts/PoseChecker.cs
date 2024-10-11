@@ -22,12 +22,11 @@ public class PoseChecker : MonoBehaviour
 
     bool CheckMatch()
     {
-        bool leftArmMatch = (puppet.arm_L_Index == shadow.arm_L_Index) &&
-                            (puppet.foreArm_L_Index == shadow.foreArm_L_Index);
+        bool leftArmMatch = Mathf.Approximately(puppet.arm_L_Rotation, shadow.arm_L_Rotation);
+        bool leftForearmMatch = Mathf.Approximately(puppet.foreArm_L_Rotation, shadow.foreArm_L_Rotation);
+        bool rightArmMatch = Mathf.Approximately(puppet.arm_R_Rotation, shadow.arm_R_Rotation);
+        bool rightForearmMatch = Mathf.Approximately(puppet.foreArm_R_Rotation, shadow.foreArm_R_Rotation);
 
-        bool rightArmMatch = (puppet.arm_R_Index == shadow.arm_R_Index) &&
-                             (puppet.foreArm_R_Index == shadow.foreArm_R_Index);
-
-        return leftArmMatch && rightArmMatch;
+        return leftArmMatch && leftForearmMatch && rightArmMatch && rightForearmMatch;
     }
 }
