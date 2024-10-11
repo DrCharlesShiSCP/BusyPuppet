@@ -3347,6 +3347,7 @@ GameObject:
   - component: {fileID: 1848697046}
   - component: {fileID: 1848697047}
   - component: {fileID: 1848697048}
+  - component: {fileID: 1848697049}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3483,6 +3484,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1848697049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848697044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39bc05410106d4c42bc326a7ca6bdd27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnChatMessage:
+    m_PersistentCalls:
+      m_Calls: []
+  pingCounter: 0
 --- !u!1 &2045746230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,7 +3547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &2142533743
 Camera:
   m_ObjectHideFlags: 0

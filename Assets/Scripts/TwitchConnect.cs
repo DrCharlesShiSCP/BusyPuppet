@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class TwitchConnect : MonoBehaviour
 {
     public UnityEvent<string, string> OnChatMessage;
-    public ShitpostTest shitpostTest;
+    //public ShitpostTest shitpostTest;
     PuppetControl puppetControl;
 
     TcpClient Twitch;
@@ -48,7 +48,7 @@ public class TwitchConnect : MonoBehaviour
 
     void Awake()
     {
-        shitpostTest = FindObjectOfType<ShitpostTest>();
+        //shitpostTest = FindObjectOfType<ShitpostTest>();
         ConnectToTwitch();
     }
 
