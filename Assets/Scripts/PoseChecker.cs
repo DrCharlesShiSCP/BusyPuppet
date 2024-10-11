@@ -10,8 +10,12 @@ public class PoseChecker : MonoBehaviour
     public GameObject dancer;
     public GameObject puppetOBJ;
 
+    public AudioClip DanceClip;
+    public AudioSource DanceSource;
+    private bool hasMatched = false;
     void Start()
     {
+        hasMatched = false;
         puppetOBJ.SetActive(true);
         dancer.SetActive(false);
         puppet = FindObjectOfType<PuppetControl>();
@@ -19,11 +23,13 @@ public class PoseChecker : MonoBehaviour
     }
     void Update()
     {
-        if (CheckMatch())
+        if (CheckMatch() && !hasMatched)
         {
+            hasMatched = true;
             Debug.Log("×öµÄºÃ£¡");
             puppetOBJ.SetActive(false);
-            dancer.SetActive (true);
+            dancer.SetActive(true);
+            DanceSource.PlayOneShot(DanceClip);
         }
     }
 
