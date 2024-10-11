@@ -27,7 +27,11 @@ public class PuppetControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        arm_L_Rotation = -135;
+        arm_R_Rotation = -135;
+        foreArm_L_Rotation = -135;
+        foreArm_R_Rotation = -135;
     }
 
     // Update is called once per frame
@@ -86,23 +90,34 @@ public class PuppetControl : MonoBehaviour
             LowerRightForearm();
         }
 
-        CheckArmPostion();
-        CheckForeArmPosition();
+        //CheckArmPostion();
+        //CheckForeArmPosition();
 
     }
     public void RaiseLeftArm()
     {
         if (arm_L_Index < 2)
         {
-            if (foreArm_L_Rotation != -135)
+            if (arm_L_Rotation != -45)
             {
-                foreArm_L_Rotation -= 45;
+                arm_L_Rotation += 45;
             }
-            else
-            {
-                foreArm_L_Index++;
-            }
+
             arm_L_Index++;
+
+            if (!(foreArm_L_Index-arm_L_Index > 1))
+            {
+                if (foreArm_L_Rotation != -135)
+                {
+                    foreArm_L_Rotation -= 45;
+                }
+                else
+                {
+
+                }
+            }
+            
+            
         }
     }
 
@@ -110,14 +125,35 @@ public class PuppetControl : MonoBehaviour
     {
         if (arm_L_Index > 0)
         {
-            if (foreArm_L_Rotation != -45)
+            if(foreArm_L_Index-arm_L_Index>1)
             {
-                foreArm_L_Rotation += 45;
+
+            }
+            else if (foreArm_L_Index < arm_L_Index)
+            {
+                if (arm_L_Rotation != -135)
+                {
+
+                    arm_L_Rotation -= 45;
+                }
             }
             else
             {
-                foreArm_L_Index--;
+                if (foreArm_L_Rotation != -45)
+                {
+                    foreArm_L_Rotation += 45;
+                }
+                else
+                {
+
+                }
+                if (arm_L_Rotation != -135)
+                {
+
+                   arm_L_Rotation -= 45;   
+                }
             }
+            
             arm_L_Index--;
         }
     }
@@ -131,7 +167,7 @@ public class PuppetControl : MonoBehaviour
                 if (arm_L_Rotation != -45)
                 {
                     arm_L_Rotation += 45;
-                    arm_L_Index++;
+                    
                 }
             }
             else
@@ -146,11 +182,23 @@ public class PuppetControl : MonoBehaviour
     {
         if (foreArm_L_Index > 0)
         {
-            if (foreArm_L_Rotation != -135)
-            {
-                foreArm_L_Rotation -= 45;
-            }
+           
+            
             foreArm_L_Index--;
+            if (foreArm_L_Index - arm_L_Index > 1)
+            {
+                if (arm_L_Rotation != -135)
+                {
+                    arm_L_Rotation -= 45;
+                }
+            }
+            else
+            {
+                if (foreArm_L_Rotation != -135)
+                {
+                    foreArm_L_Rotation -= 45;
+                }
+            }
         }
     }
 
@@ -163,7 +211,7 @@ public class PuppetControl : MonoBehaviour
                 if (arm_R_Rotation != -45)
                 {
                     arm_R_Rotation += 45;
-                    arm_R_Index++;
+
                 }
             }
             else
@@ -178,11 +226,23 @@ public class PuppetControl : MonoBehaviour
     {
         if (foreArm_R_Index > 0)
         {
-            if (foreArm_R_Rotation != -135)
-            {
-                foreArm_R_Rotation -= 45;
-            }
+
+
             foreArm_R_Index--;
+            if (foreArm_R_Index - arm_R_Index > 1)
+            {
+                if (arm_R_Rotation != -135)
+                {
+                    arm_R_Rotation -= 45;
+                }
+            }
+            else
+            {
+                if (foreArm_R_Rotation != -135)
+                {
+                    foreArm_R_Rotation -= 45;
+                }
+            }
         }
     }
 
@@ -190,15 +250,25 @@ public class PuppetControl : MonoBehaviour
     {
         if (arm_R_Index < 2)
         {
-            if (foreArm_R_Rotation != -135)
+            if (arm_R_Rotation != -45)
             {
-                foreArm_R_Rotation -= 45;
-            }
-            else
-            {
-                foreArm_R_Index++;
+                arm_R_Rotation += 45;
             }
             arm_R_Index++;
+
+            if (!(foreArm_R_Index - arm_R_Index > 1))
+            {
+                if (foreArm_R_Rotation != -135)
+                {
+                    foreArm_R_Rotation -= 45;
+                }
+                else
+                {
+
+                }
+            }
+
+           
         }
     }
 
@@ -206,17 +276,35 @@ public class PuppetControl : MonoBehaviour
     {
         if (arm_R_Index > 0)
         {
-            if (foreArm_R_Rotation != -45)
+            if (foreArm_R_Index - arm_R_Index > 1)
             {
-                foreArm_R_Rotation += 45;
+
+            }
+            else if (foreArm_R_Index < arm_R_Index)
+            {
+                if (arm_R_Rotation != -135)
+                {
+
+                    arm_R_Rotation -= 45;
+                }
             }
             else
             {
-                if (arm_R_Index - foreArm_R_Index <= 0)
+                if (foreArm_R_Rotation != -45)
                 {
-                    foreArm_R_Index--;
+                    foreArm_R_Rotation += 45;
+                }
+                else
+                {
+
+                }
+                if (arm_R_Rotation != -135)
+                {
+
+                    arm_R_Rotation -= 45;
                 }
             }
+
             arm_R_Index--;
         }
     }

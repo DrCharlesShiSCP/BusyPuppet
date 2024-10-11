@@ -19,37 +19,44 @@ public class ShadowControl : MonoBehaviour
     public float arm_R_Rotation;
     public float foreArm_R_Rotation;
 
+    public List<float> angles = new List<float>();  
+
     void Start()
     {    
-            arm_L_Index = Random.Range(0, 3);
-            if (arm_L_Index == 0)
-            {
-                foreArm_L_Index = Random.Range(0, 4);
-            }
-            else if (arm_L_Index == 2)
-            {
-                foreArm_L_Index = Random.Range(1, 4);
-            }
-            else
-            {
-                foreArm_L_Index = Random.Range(0, 4);
-            }
+        arm_L_Rotation = angles[Random.Range(0,angles.Count)];
+        arm_R_Rotation = angles[Random.Range(0, angles.Count)];
 
-            arm_R_Index = Random.Range(0, 3);
-            if (arm_R_Index == 0)
-            {
-                foreArm_R_Index = Random.Range(0, 5);
-            }
-            else if (arm_R_Index == 2)
-            {
-                foreArm_R_Index = Random.Range(1, 4);
-            }
-            else
-            {
-                foreArm_R_Index = Random.Range(0, 4);
-            }
-            UpdateArmRotation();
-            UpdateForeArmRotation();
+        foreArm_L_Rotation = angles[Random.Range(0, angles.Count)];
+        foreArm_R_Rotation = angles[Random.Range(0, angles.Count)];
+        //arm_L_Index = Random.Range(0, 3);
+        //if (arm_L_Index == 0)
+        //{
+        //    foreArm_L_Index = Random.Range(0, 4);
+        //}
+        //else if (arm_L_Index == 2)
+        //{
+        //    foreArm_L_Index = Random.Range(1, 4);
+        //}
+        //else
+        //{
+        //    foreArm_L_Index = Random.Range(0, 4);
+        //}
+
+        //arm_R_Index = Random.Range(0, 3);
+        //if (arm_R_Index == 0)
+        //{
+        //    foreArm_R_Index = Random.Range(0, 4);
+        //}
+        //else if (arm_R_Index == 2)
+        //{
+        //    foreArm_R_Index = Random.Range(1, 4);
+        //}
+        //else
+        //{
+        //    foreArm_R_Index = Random.Range(0, 4);
+        //}
+        //UpdateArmRotation();
+        //UpdateForeArmRotation();
     }
 
     void Update()
@@ -59,8 +66,8 @@ public class ShadowControl : MonoBehaviour
 
         arm_R.transform.rotation = Quaternion.Euler(new Vector3(arm_R_Rotation, -90, 0));
         foreArm_R.transform.rotation = Quaternion.Euler(new Vector3(foreArm_R_Rotation, -90, 0));
-        CheckForeArmPosition();
-        CheckArmPostion();
+        //CheckForeArmPosition();
+        //CheckArmPostion();
     }
 
     void UpdateArmRotation()
@@ -93,7 +100,7 @@ public class ShadowControl : MonoBehaviour
             case 0: return -135;
             case 1: return -90;
             case 2: return -45;
-            case 3: return 0;
+            case 3: return -45;
             default: return 0;
         }
     }
