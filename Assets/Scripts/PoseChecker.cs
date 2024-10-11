@@ -7,8 +7,13 @@ public class PoseChecker : MonoBehaviour
     public PuppetControl puppet; 
     public ShadowControl shadow;
 
+    public GameObject dancer;
+    public GameObject puppetOBJ;
+
     void Start()
     {
+        puppetOBJ.SetActive(true);
+        dancer.SetActive(false);
         puppet = FindObjectOfType<PuppetControl>();
         shadow = FindObjectOfType<ShadowControl>();
     }
@@ -17,6 +22,8 @@ public class PoseChecker : MonoBehaviour
         if (CheckMatch())
         {
             Debug.Log("×öµÄºÃ£¡");
+            puppetOBJ.SetActive(false);
+            dancer.SetActive (true);
         }
     }
 

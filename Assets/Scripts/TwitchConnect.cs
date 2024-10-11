@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Net.Sockets;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class TwitchConnect : MonoBehaviour
 {
     public UnityEvent<string, string> OnChatMessage;
     public ShitpostTest shitpostTest;
+    PuppetControl puppetControl;
 
     TcpClient Twitch;
     StreamReader Reader;
@@ -28,6 +30,10 @@ public class TwitchConnect : MonoBehaviour
 
     public float pingCounter;
 
+    private void Start()
+    {
+        puppetControl = FindObjectOfType<PuppetControl>();
+    }
     private void ConnectToTwitch()
     {
         Twitch = new TcpClient(URL, PORT);
@@ -81,37 +87,58 @@ public class TwitchConnect : MonoBehaviour
                 //You can assign the method it invokes in the inspector.
                 OnChatMessage?.Invoke(chatter, msg);
 
-
-
                 print(msg);
 
-                if (msg == "Amongus")
+                if (msg == "Raise Left Arm")
                 {
-                    Debug.Log("stop posting about");
-                    shitpostTest.amongus();
-                }
-                
-                if (msg == "Cowboy")
-                {
-                    Debug.Log("cowboyed");
-                    shitpostTest.slumberParty();
+                    Debug.Log("Raise Left Arm");
+                    puppetControl.RaiseLeftArm();
                 }
 
-                if (msg == "JohnCena")
+                if (msg == "Lower Left Arm")
                 {
-                    Debug.Log("zao shang hao zhong guo xian zai wo you bingchilin");
-                    shitpostTest.bingChiling();
+                    Debug.Log("Lower Left Arm");
+                    puppetControl.LowerLeftArm();
                 }
 
-                if (msg == "Drip")
+                if (msg == "Raise Left Forearm")
                 {
-                    Debug.Log("HeggotheDrip");
-                    shitpostTest.drip();
+                    Debug.Log("Raise Left Forearm");
+                    puppetControl.RaiseLeftForearm();
                 }
-                if (msg == "Aneurysm")
+
+                if (msg == "Lower Left Forearm")
                 {
-                    Debug.Log("ded");
-                    shitpostTest.aneurysm();
+                    Debug.Log("Lower Left Forearm");
+                    puppetControl.LowerLeftForearm();
+                }
+
+                if (msg == "Raise Right Forearm")
+                {
+                    Debug.Log("Raise Right Forearm");
+                    puppetControl.RaiseRightForearm();
+                }
+
+                if (msg == "Lower Right Forearm")
+                {
+                    Debug.Log("Lower Right Forearm");
+                    puppetControl.LowerRightForearm();
+                }
+
+                if (msg == "Raise Right Arm")
+                {
+                    Debug.Log("Raise Right Arm");
+                    puppetControl.RaiseRightArm();
+                }
+
+                if (msg == "Lower Right Arm")
+                {
+                    Debug.Log("Lower Right Arm");
+                    puppetControl.LowerRightArm();
+                }
+                if (msg == "reset")
+                {
+                    SceneManager.LoadScene("PuppetTestScene");
                 }
             }
         }

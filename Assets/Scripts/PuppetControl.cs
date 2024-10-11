@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,175 +45,140 @@ public class PuppetControl : MonoBehaviour
         arm_R.transform.rotation = Quaternion.Euler(new Vector3(arm_R_Rotation, -90, 0));
         foreArm_R.transform.rotation = Quaternion.Euler(new Vector3(foreArm_R_Rotation, -90, 0));
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (arm_L_Index < 2)
-            {
-
-                if (foreArm_L_Rotation!=-135)
-                {
-                    foreArm_L_Rotation -= 45;
-                    
-                }
-                else
-                {
-                    foreArm_L_Index++;
-                }
-                
-                arm_L_Index++;
-            }
-            
-        }  //Left Arm Index ++
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (arm_L_Index >0)
-            {
-                if (foreArm_L_Rotation != -45)
-                {
-                    foreArm_L_Rotation += 45;
-                    
-                }
-                else
-                {
-                    foreArm_L_Index--;
-                }
-
-                arm_L_Index--;
-            }
-        }  //Left Arm Index --
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if (foreArm_L_Index <4)
-            {
-                
-                if (foreArm_L_Rotation == -45)
-                {
-                    if (arm_L_Rotation != -45)
-                    {
-                        arm_L_Rotation += 45;
-                        arm_L_Index++;
-                    }
-                    
-                }
-                else
-                {
-                    foreArm_L_Rotation += 45;
-                }
-                foreArm_L_Index++;
-            }
-        }  //Left Arm Index --
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            if (foreArm_L_Index > 0)
-            {
-
-                if (foreArm_L_Rotation == -135)
-                {
-
-
-                }
-                else
-                {
-                    foreArm_L_Rotation -= 45;
-                }
-                foreArm_L_Index--;
-            }
-        }  //Left Arm Index --
-
-
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            if (foreArm_R_Index < 4)
-            {
-
-                if (foreArm_R_Rotation == -45)
-                {
-                    if (arm_R_Rotation != -45)
-                    {
-                        arm_R_Rotation += 45;
-                        arm_R_Index++;
-                    }
-
-                }
-                else
-                {
-                    foreArm_R_Rotation += 45;
-                }
-                foreArm_R_Index++;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            if (foreArm_R_Index > 0)
-            {
-
-                if (foreArm_R_Rotation == -135)
-                {
-                    
-
-                }
-                else
-                {
-                    foreArm_R_Rotation -= 45;
-                }
-                foreArm_R_Index--;
-            }
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Keypad4))
-        {
-            if (arm_R_Index < 2)
-            {
-
-                if (foreArm_R_Rotation != -135)
-                {
-                    foreArm_R_Rotation -= 45;
-
-                }
-                else
-                {
-                    foreArm_R_Index++;
-                }
-
-                arm_R_Index++;
-            }
-
-        }  //Right Arm Index ++
-
-        if (Input.GetKeyDown(KeyCode.Keypad6))
-        {
-            if (arm_R_Index > 0)
-            {
-                if (foreArm_R_Rotation != -45)
-                {
-                    foreArm_R_Rotation += 45;
-
-                }
-                else
-                {
-                    if(arm_R_Index - foreArm_R_Index > 0)
-                    {
-
-                    }
-                    else
-                    {
-                        foreArm_R_Index--;
-                    }
-                    
-                }
-
-                arm_R_Index--;
-            }
-        }  //Right Arm Index --
-
         CheckArmPostion();
         CheckForeArmPosition();
+
+    }
+    public void RaiseLeftArm()
+    {
+        if (arm_L_Index < 2)
+        {
+            if (foreArm_L_Rotation != -135)
+            {
+                foreArm_L_Rotation -= 45;
+            }
+            else
+            {
+                foreArm_L_Index++;
+            }
+            arm_L_Index++;
+        }
     }
 
+    public void LowerLeftArm()
+    {
+        if (arm_L_Index > 0)
+        {
+            if (foreArm_L_Rotation != -45)
+            {
+                foreArm_L_Rotation += 45;
+            }
+            else
+            {
+                foreArm_L_Index--;
+            }
+            arm_L_Index--;
+        }
+    }
+
+    public void RaiseLeftForearm()
+    {
+        if (foreArm_L_Index < 4)
+        {
+            if (foreArm_L_Rotation == -45)
+            {
+                if (arm_L_Rotation != -45)
+                {
+                    arm_L_Rotation += 45;
+                    arm_L_Index++;
+                }
+            }
+            else
+            {
+                foreArm_L_Rotation += 45;
+            }
+            foreArm_L_Index++;
+        }
+    }
+
+    public void LowerLeftForearm()
+    {
+        if (foreArm_L_Index > 0)
+        {
+            if (foreArm_L_Rotation != -135)
+            {
+                foreArm_L_Rotation -= 45;
+            }
+            foreArm_L_Index--;
+        }
+    }
+
+    public void RaiseRightForearm()
+    {
+        if (foreArm_R_Index < 4)
+        {
+            if (foreArm_R_Rotation == -45)
+            {
+                if (arm_R_Rotation != -45)
+                {
+                    arm_R_Rotation += 45;
+                    arm_R_Index++;
+                }
+            }
+            else
+            {
+                foreArm_R_Rotation += 45;
+            }
+            foreArm_R_Index++;
+        }
+    }
+
+    public void LowerRightForearm()
+    {
+        if (foreArm_R_Index > 0)
+        {
+            if (foreArm_R_Rotation != -135)
+            {
+                foreArm_R_Rotation -= 45;
+            }
+            foreArm_R_Index--;
+        }
+    }
+
+    public void RaiseRightArm()
+    {
+        if (arm_R_Index < 2)
+        {
+            if (foreArm_R_Rotation != -135)
+            {
+                foreArm_R_Rotation -= 45;
+            }
+            else
+            {
+                foreArm_R_Index++;
+            }
+            arm_R_Index++;
+        }
+    }
+
+    public void LowerRightArm()
+    {
+        if (arm_R_Index > 0)
+        {
+            if (foreArm_R_Rotation != -45)
+            {
+                foreArm_R_Rotation += 45;
+            }
+            else
+            {
+                if (arm_R_Index - foreArm_R_Index <= 0)
+                {
+                    foreArm_R_Index--;
+                }
+            }
+            arm_R_Index--;
+        }
+    }
     public void CheckArmPostion()
     {
         if(arm_L_Index == 0)
