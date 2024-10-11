@@ -45,6 +45,47 @@ public class PuppetControl : MonoBehaviour
         arm_R.transform.rotation = Quaternion.Euler(new Vector3(arm_R_Rotation, -90, 0));
         foreArm_R.transform.rotation = Quaternion.Euler(new Vector3(foreArm_R_Rotation, -90, 0));
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            RaiseLeftArm();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            LowerLeftArm();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            RaiseLeftForearm();
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            LowerLeftForearm();
+        }
+
+        // Right Arm Controls
+        if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            RaiseRightArm();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad6))
+        {
+            LowerRightArm();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            RaiseRightForearm();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            LowerRightForearm();
+        }
+
         CheckArmPostion();
         CheckForeArmPosition();
 
