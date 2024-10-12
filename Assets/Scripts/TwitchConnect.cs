@@ -89,49 +89,49 @@ public class TwitchConnect : MonoBehaviour
 
                 print(msg);
 
-                if (msg == "Raise Left Arm")
+                if (msg == "Raise Left Arm" || msg == "raise left arm" || msg == "raiseleftarm")
                 {
                     Debug.Log("Raise Left Arm");
                     puppetControl.RaiseLeftArm();
                 }
 
-                if (msg == "Lower Left Arm")
+                if (msg == "Lower Left Arm" || msg == "lower left arm" || msg == "lowerleftarm")
                 {
                     Debug.Log("Lower Left Arm");
                     puppetControl.LowerLeftArm();
                 }
 
-                if (msg == "Raise Left Forearm")
+                if (msg == "Raise Left Forearm" || msg == "raise left forearm" || msg == "raiseleftforearm")
                 {
                     Debug.Log("Raise Left Forearm");
                     puppetControl.RaiseLeftForearm();
                 }
 
-                if (msg == "Lower Left Forearm")
+                if (msg == "Lower Left Forearm" || msg == "lower left forearm" || msg == "lowerleftforearm")
                 {
                     Debug.Log("Lower Left Forearm");
                     puppetControl.LowerLeftForearm();
                 }
 
-                if (msg == "Raise Right Forearm")
+                if (msg == "Raise Right Forearm" || msg == "raise right forearm" || msg == "raiserightforearm")
                 {
                     Debug.Log("Raise Right Forearm");
                     puppetControl.RaiseRightForearm();
                 }
 
-                if (msg == "Lower Right Forearm")
+                if (msg == "Lower Right Forearm" || msg == "lower right forearm" || msg == "lowerrightforearm")
                 {
                     Debug.Log("Lower Right Forearm");
                     puppetControl.LowerRightForearm();
                 }
 
-                if (msg == "Raise Right Arm")
+                if (msg == "Raise Right Arm" || msg == "raise right arm" || msg == "raiserightarm")
                 {
                     Debug.Log("Raise Right Arm");
                     puppetControl.RaiseRightArm();
                 }
 
-                if (msg == "Lower Right Arm")
+                if (msg == "Lower Right Arm" || msg == "lower right arm" || msg == "lowerrightarm")
                 {
                     Debug.Log("Lower Right Arm");
                     puppetControl.LowerRightArm();
