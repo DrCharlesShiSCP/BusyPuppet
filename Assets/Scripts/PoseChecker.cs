@@ -25,14 +25,21 @@ public class PoseChecker : MonoBehaviour
     {
         if (CheckMatch() && !hasMatched)
         {
-            hasMatched = true;
-            Debug.Log("做的好！");
-            puppetOBJ.SetActive(false);
-            dancer.SetActive(true);
-            DanceSource.PlayOneShot(DanceClip);
+            
+            StartCoroutine(CheckMatchDelay());
         }
     }
 
+    IEnumerator CheckMatchDelay()
+    {
+        hasMatched = true;
+        Debug.Log("做的好！");
+        yield return new WaitForSeconds(1);
+        puppetOBJ.SetActive(false);
+        dancer.SetActive(true);
+        DanceSource.PlayOneShot(DanceClip);
+        GameRoot.GetInstance().WIn();
+    }
     bool CheckMatch()
     {
         bool leftArmMatch = Mathf.Approximately(puppet.arm_L_Rotation, shadow.arm_L_Rotation);

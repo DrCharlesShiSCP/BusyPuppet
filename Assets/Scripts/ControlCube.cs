@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class ControlCube : MonoBehaviour
@@ -11,9 +12,19 @@ public class ControlCube : MonoBehaviour
     public GameObject foreArm_R;
     public GameObject foreArm_L;
 
+    public GameObject thigh_L;
+    public GameObject thigh_R;
+
+    public GameObject calf_L;
+    public GameObject calf_R;
+
     public PuppetControl puppetControl;
 
     public List<Transform> heights= new List<Transform>();
+
+    public List<Transform> thighHeight = new List<Transform>();
+
+    public List<Transform> calfHeight= new List<Transform>();
     private void Awake()
     {
         
@@ -29,6 +40,8 @@ public class ControlCube : MonoBehaviour
     {
         ChangeArmCubeHeight();
         CheckForeArmCubeHeight();
+        CheckThighHeight();
+        CheckCalfHeight();
     }
 
     public void ChangeArmCubeHeight()
@@ -125,6 +138,34 @@ public class ControlCube : MonoBehaviour
                 Vector3 pos = foreArm_R.transform.position;
                 foreArm_R.transform.position = new Vector3(pos.x, heights[4].position.y, pos.z);
             }
+        }
+    }
+
+    public void CheckThighHeight()
+    {
+        if (puppetControl != null)
+        {
+
+            Vector3 pos = thigh_L.transform.position;
+             thigh_L.transform.position = new Vector3(pos.x, thighHeight[puppetControl.thigh_L_Index].position.y, pos.z);
+
+
+            Vector3 posR = thigh_R.transform.position;
+            thigh_R.transform.position = new Vector3(posR.x, thighHeight[puppetControl.thigh_R_Index].position.y, posR.z);
+        }
+    }
+
+    public void CheckCalfHeight()
+    {
+        if (puppetControl != null)
+        {
+
+            Vector3 pos = calf_L.transform.position;
+            calf_L.transform.position = new Vector3(pos.x, calfHeight[puppetControl.calf_L_Index].position.y, pos.z);
+
+
+            Vector3 posR = calf_R.transform.position;
+            calf_R.transform.position = new Vector3(posR.x, calfHeight[puppetControl.calf_R_Index].position.y, posR.z);
         }
     }
 }
