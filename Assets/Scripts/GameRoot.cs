@@ -10,7 +10,7 @@ public class GameRoot : MonoBehaviour
     public static GameRoot instance;
     // Start is called before the first frame update
 
-    public float roundTime = 20;
+    public float roundTime = 120;
 
     public float currentTime;
 

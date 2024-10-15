@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Net.Sockets;
 using System.IO;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class TwitchConnect : MonoBehaviour
 {
+    public TextMeshProUGUI leaderBoard;
     public UnityEvent<string, string> OnChatMessage;
     //public ShitpostTest shitpostTest;
     PuppetControl puppetControl;
@@ -30,6 +33,7 @@ public class TwitchConnect : MonoBehaviour
 
     public float pingCounter;
 
+    private Dictionary<string, int> userCommandCounts = new Dictionary<string, int>();
     private void Start()
     {
         puppetControl = FindObjectOfType<PuppetControl>();
@@ -82,7 +86,15 @@ public class TwitchConnect : MonoBehaviour
 
                 splitPoint = message.IndexOf(":", 1);   //so everything after that colon is the message that the user typed... in this case, 'hello world'
                 string msg = message.Substring(splitPoint + 1);    //anything that's passed that colon, bring it in to that string
-
+               
+                if (userCommandCounts.ContainsKey(chatter))
+                {
+                    userCommandCounts[chatter]++;
+                }
+                else
+                {
+                    userCommandCounts[chatter] = 1;
+                }
                 //This UnityEvent is what will look at the messager, and their message - then it will invoke a method from another script that we assign! 
                 //You can assign the method it invokes in the inspector.
                 OnChatMessage?.Invoke(chatter, msg);
@@ -162,21 +174,20 @@ public class TwitchConnect : MonoBehaviour
                     puppetControl.RaiseLeftThigh();
                 }
 
-                #region Raise and lower thigh
-                if (msg == "Lower Left Thigh" || msg == "lower left thigh" || msg == "lowerleftthigh" ||
-                    msg == "Lower left thigh" || msg == "Lower Left thigh" || msg == "Lowerleftthigh" ||
-                    msg == "Lower L_T" || msg == "Lower L T" || msg == "Lower l t")
-                {
-                    Debug.Log("Lower Left Thigh");
-                    puppetControl.LowerLeftThigh();
-                }
-
                 if (msg == "Raise Left Thigh" || msg == "raise left thigh" || msg == "raiseleftthigh" ||
                     msg == "Raise left thigh" || msg == "Raise Left thigh" || msg == "Raiseleftthigh" ||
                     msg == "Raise L_T" || msg == "Raise L T" || msg == "Raise l t")
                 {
                     Debug.Log("Raise Left Thigh");
                     puppetControl.RaiseLeftThigh();
+                }
+
+                if (msg == "Lower Left Thigh" || msg == "lower left thigh" || msg == "lowerleftthigh" ||
+                    msg == "Lower left thigh" || msg == "Lower Left thigh" || msg == "Lowerleftthigh" ||
+                    msg == "Lower L_T" || msg == "Lower L T" || msg == "Lower l t")
+                {
+                    Debug.Log("Lower Left Thigh");
+                    puppetControl.LowerLeftThigh();
                 }
 
                 if (msg == "Raise Right Thigh" || msg == "raise right thigh" || msg == "raiserightthigh" ||
@@ -194,22 +205,21 @@ public class TwitchConnect : MonoBehaviour
                     Debug.Log("Lower Right Thigh");
                     puppetControl.LowerRightThigh();
                 }
-                #endregion
-
-                #region Raise and lower calf
-                if (msg == "Lower Left Calf" || msg == "lower left calf" || msg == "lowerleftcalf" ||
-                    msg == "Lower left calf" || msg == "Lower Left calf" || msg == "Lowerleftcalf" ||
-                    msg == "Lower L_C" || msg == "Lower L C" || msg == "Lower l c")
-                {
-                    Debug.Log("Lower Left Calf");
-                    puppetControl.LowerLeftCalf();
-                }
+               
                 if (msg == "Raise Left Calf" || msg == "raise left calf" || msg == "raiseleftcalf" ||
                     msg == "Raise left calf" || msg == "Raise Left calf" || msg == "Raiseleftcalf" ||
                     msg == "Raise L_C" || msg == "Raise L C" || msg == "Raise l c")
                 {
                     Debug.Log("Raise Left Calf");
                     puppetControl.RaiseLeftCalf();
+                }
+
+                if (msg == "Lower Left Calf" || msg == "lower left calf" || msg == "lowerleftcalf" ||
+                    msg == "Lower left calf" || msg == "Lower Left calf" || msg == "Lowerleftcalf" ||
+                    msg == "Lower L_C" || msg == "Lower L C" || msg == "Lower l c")
+                {
+                    Debug.Log("Lower Left Calf");
+                    puppetControl.LowerLeftCalf();
                 }
 
                 if (msg == "Raise Right Calf" || msg == "raise right calf" || msg == "raiserightcalf" ||
@@ -227,7 +237,6 @@ public class TwitchConnect : MonoBehaviour
                     Debug.Log("Lower Right Calf");
                     puppetControl.LowerRightCalf();
                 }
-                #endregion
                 if (msg == "reset")
                 {
                     
@@ -235,5 +244,21 @@ public class TwitchConnect : MonoBehaviour
                 }
             }
         }
+    }
+    void UpdateLeaderboard()
+    {
+        // Sort the userCommandCounts dictionary by command count in descending order and take the top 5
+        var topUsers = userCommandCounts.OrderByDescending(x => x.Value).Take(5);
+
+        // Format the leaderboard text
+        string leaderboard = "Top 5 Command Users:\n";
+        int rank = 1;
+        foreach (var user in topUsers)
+        {
+            leaderboard += $"{rank}. {user.Key}: {user.Value} commands\n";
+            rank++;
+        }
+
+        leaderBoard.text = leaderboard;
     }
 }

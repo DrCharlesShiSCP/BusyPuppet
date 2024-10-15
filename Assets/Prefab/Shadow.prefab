@@ -1819,14 +1819,34 @@ MonoBehaviour:
   foreArm_R: {fileID: 450923556169935523}
   arm_L: {fileID: 855218295982204125}
   foreArm_L: {fileID: 5722085460744199043}
+  thigh_L: {fileID: 7582865141076683567}
+  thigh_R: {fileID: 253998585123087929}
+  calf_L: {fileID: 8964599557168194429}
+  calf_R: {fileID: 2077462375919344587}
   arm_L_Index: 0
   foreArm_L_Index: 0
   arm_R_Index: 0
   foreArm_R_Index: 0
+  thigh_L_Index: 0
+  thigh_R_Index: 0
+  calf_R_Index: 0
+  calf_L_Index: 0
   arm_L_Rotation: 0
   foreArm_L_Rotation: 0
   arm_R_Rotation: 0
   foreArm_R_Rotation: 0
+  thigh_L_Rotation: 0
+  thigh_R_Rotation: 0
+  calf_L_Rotation: 0
+  calf_R_Rotation: 0
+  angles:
+  - -135
+  - -90
+  - -45
+  legAngles:
+  - -180
+  - -135
+  - -90
 --- !u!1 &7133735498423015156
 GameObject:
   m_ObjectHideFlags: 0

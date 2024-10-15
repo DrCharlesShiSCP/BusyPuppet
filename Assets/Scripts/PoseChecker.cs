@@ -47,6 +47,13 @@ public class PoseChecker : MonoBehaviour
         bool rightArmMatch = Mathf.Approximately(puppet.arm_R_Rotation, shadow.arm_R_Rotation);
         bool rightForearmMatch = Mathf.Approximately(puppet.foreArm_R_Rotation, shadow.foreArm_R_Rotation);
 
-        return leftArmMatch && leftForearmMatch && rightArmMatch && rightForearmMatch;
+        // Lower body match
+        bool leftThighMatch = Mathf.Approximately(puppet.thigh_L_Rotation, shadow.thigh_L_Rotation);
+        bool rightThighMatch = Mathf.Approximately(puppet.thigh_R_Rotation, shadow.thigh_R_Rotation);
+        bool leftCalfMatch = Mathf.Approximately(puppet.calf_L_Rotation, shadow.calf_L_Rotation);
+        bool rightCalfMatch = Mathf.Approximately(puppet.calf_R_Rotation, shadow.calf_R_Rotation);
+
+        return leftArmMatch && leftForearmMatch && rightArmMatch && rightForearmMatch &&
+               leftThighMatch && rightThighMatch && leftCalfMatch && rightCalfMatch;
     }
 }
