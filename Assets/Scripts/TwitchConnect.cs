@@ -97,8 +97,8 @@ public class TwitchConnect : MonoBehaviour
                 }
                 //This UnityEvent is what will look at the messager, and their message - then it will invoke a method from another script that we assign! 
                 //You can assign the method it invokes in the inspector.
+                UpdateLeaderboard();
                 OnChatMessage?.Invoke(chatter, msg);
-
                 print(msg);
 
                 
