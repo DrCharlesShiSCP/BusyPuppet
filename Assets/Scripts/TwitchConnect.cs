@@ -11,6 +11,7 @@ using TMPro;
 public class TwitchConnect : MonoBehaviour
 {
     public TextMeshProUGUI leaderBoard;
+    public TextMeshProUGUI recentCommandsText;
     public UnityEvent<string, string> OnChatMessage;
     //public ShitpostTest shitpostTest;
     PuppetControl puppetControl;
@@ -34,6 +35,7 @@ public class TwitchConnect : MonoBehaviour
     public float pingCounter;
 
     private Dictionary<string, int> userCommandCounts = new Dictionary<string, int>();
+    private List<string> recentCommands = new List<string>();
     private void Start()
     {
         puppetControl = FindObjectOfType<PuppetControl>();
@@ -98,6 +100,7 @@ public class TwitchConnect : MonoBehaviour
                 //This UnityEvent is what will look at the messager, and their message - then it will invoke a method from another script that we assign! 
                 //You can assign the method it invokes in the inspector.
                 UpdateLeaderboard();
+                UpdateRecentCommands($"{chatter}: {msg}");
                 OnChatMessage?.Invoke(chatter, msg);
                 print(msg);
 
@@ -252,5 +255,20 @@ public class TwitchConnect : MonoBehaviour
         }
 
         leaderBoard.text = leaderboard;
+    }
+    void UpdateRecentCommands(string newCommand)
+    {
+        recentCommands.Insert(0, newCommand);
+
+        if (recentCommands.Count > 5)
+        {
+            recentCommands.RemoveAt(recentCommands.Count - 1);
+        }
+
+        recentCommandsText.text = "Recent Commands:\n";
+        foreach (string command in recentCommands)
+        {
+            recentCommandsText.text += command + "\n";
+        }
     }
 }
