@@ -18,28 +18,42 @@ public class PuppetControl : MonoBehaviour
     public GameObject calf_L;
     public GameObject calf_R;
 
-    public float thigh_L_Rotation;
-    public float thigh_R_Rotation;
-    public float calf_L_Rotation;
-    public float calf_R_Rotation;
+    [HideInInspector]public float thigh_L_Rotation;
+    [HideInInspector] public float thigh_R_Rotation;
+    [HideInInspector] public float calf_L_Rotation;
+    [HideInInspector] public float calf_R_Rotation;
 
-    public float arm_R_Rotation;
-    public float foreArm_R_Rotation;
+    [HideInInspector] public float arm_R_Rotation;
+    [HideInInspector] public float foreArm_R_Rotation;
 
-    public float arm_L_Rotation;
-    public float foreArm_L_Rotation;
+    [HideInInspector] public float arm_L_Rotation;
+    [HideInInspector] public float foreArm_L_Rotation;
 
-    public int arm_L_Index;
-    public int foreArm_L_Index;
+    [HideInInspector] public int arm_L_Index;
+    [HideInInspector] public int foreArm_L_Index;
 
-    public int arm_R_Index;
-    public int foreArm_R_Index;
+    [HideInInspector] public int arm_R_Index;
+    [HideInInspector] public int foreArm_R_Index;
 
-    public int thigh_L_Index;
-    public int thigh_R_Index;
+    [HideInInspector] public int thigh_L_Index;
+    [HideInInspector] public int thigh_R_Index;
 
-    public int calf_R_Index;
-    public int calf_L_Index;
+    [HideInInspector] public int calf_R_Index;
+    [HideInInspector] public int calf_L_Index;
+
+    #region
+    public LinerenderRope arm_L_Line;
+    public LinerenderRope foreArm_L_Line;
+
+    public LinerenderRope foreArm_R_Line;
+    public LinerenderRope arm_R_Line;
+
+    public LinerenderRope calf_R_Line;
+    public LinerenderRope calf_L_Line;
+
+    public LinerenderRope thigh_R_Line;
+    public LinerenderRope thigh_L_Line;
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
@@ -173,13 +187,18 @@ public class PuppetControl : MonoBehaviour
                     if (foreArm_L_Rotation != -135)
                     {
                         foreArm_L_Rotation -= 45;
+                        
                     }
                     else
                     {
 
                     }
+                    if(arm_L_Index - foreArm_L_Index > 0)
+                    {
+                        foreArm_L_Line.tension = foreArm_L_Line.targetTension;
+                    }
                 }
-
+                arm_L_Line.tension = 1;
             }
         }
         
@@ -189,6 +208,10 @@ public class PuppetControl : MonoBehaviour
     {
         if (!GameRoot.GetInstance().gameEnd)
         {
+            if(arm_L_Index ==1)
+            {
+                arm_L_Line.tension = arm_L_Line.targetTension;
+            }
             if (arm_L_Index > 0)
             {
                 if (foreArm_L_Index - arm_L_Index > 1)
@@ -241,9 +264,19 @@ public class PuppetControl : MonoBehaviour
                 }
                 else
                 {
-                    foreArm_L_Rotation += 45;
+                    if(foreArm_L_Index >= arm_L_Index)
+                    {
+
+                        foreArm_L_Rotation += 45;
+                        foreArm_L_Line.tension = 1;
+                    }
+                    else
+                    {
+
+                    }
                 }
                 foreArm_L_Index++;
+                
             }
         }
     }
@@ -252,11 +285,16 @@ public class PuppetControl : MonoBehaviour
     {
         if (!GameRoot.GetInstance().gameEnd)
         {
+            if (foreArm_L_Index == 1)
+            {
+                foreArm_L_Line.tension = foreArm_L_Line.targetTension;
+            }
             if (foreArm_L_Index > 0)
             {
 
 
                 foreArm_L_Index--;
+                
                 if (foreArm_L_Index - arm_L_Index > 1)
                 {
                     if (arm_L_Rotation != -135)
@@ -266,6 +304,10 @@ public class PuppetControl : MonoBehaviour
                 }
                 else
                 {
+                    if(foreArm_L_Index - arm_L_Index < 0)
+                    {
+                        foreArm_L_Line.tension = foreArm_L_Line.targetTension;
+                    }
                     if (foreArm_L_Rotation != -135)
                     {
                         foreArm_L_Rotation -= 45;
@@ -291,7 +333,16 @@ public class PuppetControl : MonoBehaviour
                 }
                 else
                 {
-                    foreArm_R_Rotation += 45;
+                    if (foreArm_R_Index >= arm_R_Index)
+                    {
+
+                        foreArm_R_Rotation += 45;
+                        foreArm_R_Line.tension = 1;
+                    }
+                    else
+                    {
+
+                    }
                 }
                 foreArm_R_Index++;
             }
@@ -302,6 +353,11 @@ public class PuppetControl : MonoBehaviour
     {
         if (!GameRoot.GetInstance().gameEnd)
         {
+
+            if (foreArm_R_Index == 1)
+            {
+                foreArm_R_Line.tension = foreArm_R_Line.targetTension;
+            }
             if (foreArm_R_Index > 0)
             {
 
@@ -316,6 +372,10 @@ public class PuppetControl : MonoBehaviour
                 }
                 else
                 {
+                    if (foreArm_R_Index - arm_R_Index < 0)
+                    {
+                        foreArm_R_Line.tension = foreArm_R_Line.targetTension;
+                    }
                     if (foreArm_R_Rotation != -135)
                     {
                         foreArm_R_Rotation -= 45;
@@ -347,8 +407,12 @@ public class PuppetControl : MonoBehaviour
                     {
 
                     }
+                    if (arm_R_Index - foreArm_R_Index > 0)
+                    {
+                        foreArm_R_Line.tension = foreArm_R_Line.targetTension;
+                    }
                 }
-
+                arm_R_Line.tension = 1;
 
             }
         }
@@ -360,6 +424,10 @@ public class PuppetControl : MonoBehaviour
         {
             if (arm_R_Index > 0)
             {
+                if (arm_R_Index == 1)
+                {
+                    arm_R_Line.tension = arm_R_Line.targetTension;
+                }
                 if (foreArm_R_Index - arm_R_Index > 1)
                 {
 
@@ -466,6 +534,7 @@ public class PuppetControl : MonoBehaviour
             {
                 thigh_L_Rotation += 45;
                 thigh_L_Index++;
+                thigh_L_Line.tension = 1;
             }
         }
     }
@@ -478,6 +547,10 @@ public class PuppetControl : MonoBehaviour
             {
                 thigh_L_Rotation -= 45;
                 thigh_L_Index--;
+
+                thigh_L_Line.tension = thigh_L_Line.targetTension;
+
+
             }
         }
     }
@@ -490,6 +563,7 @@ public class PuppetControl : MonoBehaviour
             {
                 calf_L_Rotation += 45;
                 calf_L_Index++;
+                calf_L_Line.tension = 1;
             }
         }
     }
@@ -498,10 +572,15 @@ public class PuppetControl : MonoBehaviour
     {
         if (!GameRoot.GetInstance().gameEnd)
         {
+            if (calf_L_Rotation == -135)
+            {
+                calf_L_Line.tension = calf_L_Line.targetTension;
+            }
             if (calf_L_Rotation > -180)
             {
                 calf_L_Rotation -= 45;
                 calf_L_Index--;
+                
             }
         }
     }
@@ -514,6 +593,7 @@ public class PuppetControl : MonoBehaviour
             {
                 thigh_R_Rotation += 45;
                 thigh_R_Index++;
+                thigh_R_Line.tension = 1;
             }
         }
     }
@@ -526,7 +606,12 @@ public class PuppetControl : MonoBehaviour
             {
                 thigh_R_Rotation -= 45;
                 thigh_R_Index--;
+
+                thigh_R_Line.tension = thigh_R_Line.targetTension;
+
+
             }
+           
         }
     }
 
@@ -538,6 +623,7 @@ public class PuppetControl : MonoBehaviour
             {
                 calf_R_Rotation += 45;
                 calf_R_Index++;
+                calf_R_Line.tension = 1;
             }
         }
     }
@@ -548,9 +634,15 @@ public class PuppetControl : MonoBehaviour
         {
             if (calf_R_Rotation > -180)
             {
+                if (calf_R_Rotation == -135)
+                {
+                    calf_R_Line.tension = calf_R_Line.targetTension;
+                }
                 calf_R_Rotation -= 45;
                 calf_R_Index--;
+                
             }
+            
         }
     }
 }
