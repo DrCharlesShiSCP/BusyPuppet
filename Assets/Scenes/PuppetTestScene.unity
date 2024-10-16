@@ -3369,13 +3369,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c636ce382bf4b934993e6b438cda93c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundTime: 120
+  roundTime: 75
   currentTime: 0
   gameEnd: 0
   TimeCountUI: {fileID: 780015460}
   TimeUp: {fileID: 1990910775}
   CorrectUI: {fileID: 660239101}
-  resultUI: {fileID: 0}
+  resultUI: {fileID: 1416960047}
 --- !u!4 &861117030
 Transform:
   m_ObjectHideFlags: 0
@@ -4478,11 +4478,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3184131827783207829, guid: af4d0b5f68e01744dbafe41d53a8b349, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999998
+      value: -0.273
       objectReference: {fileID: 0}
     - target: {fileID: 3184131827783207829, guid: af4d0b5f68e01744dbafe41d53a8b349, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.44000572
+      value: -0.313
       objectReference: {fileID: 0}
     - target: {fileID: 3184131827783207829, guid: af4d0b5f68e01744dbafe41d53a8b349, type: 3}
       propertyPath: m_LocalRotation.w
