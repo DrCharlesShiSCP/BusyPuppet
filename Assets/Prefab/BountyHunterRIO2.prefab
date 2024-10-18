@@ -1,0 +1,181 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1021034596772366858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6794978574611549760}
+  - component: {fileID: 4188868437832807901}
+  m_Layer: 0
+  m_Name: BountyHunterRIO2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6794978574611549760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021034596772366858}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1686486077028736756}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4188868437832807901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021034596772366858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24382d4cf4d7a05408f601719d7f6796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arm_R: {fileID: 3473324345402682148}
+  foreArm_R: {fileID: 2158022762555494438}
+  arm_L: {fileID: 1603821147083412863}
+  foreArm_L: {fileID: 781621337250600770}
+  thigh_L: {fileID: 5825402158205663780}
+  thigh_R: {fileID: 7033851694860167263}
+  calf_L: {fileID: 2727123931050229839}
+  calf_R: {fileID: 6580069757812072703}
+  thigh_L_Rotation: 0
+  thigh_R_Rotation: 0
+  calf_L_Rotation: 0
+  calf_R_Rotation: 0
+  arm_R_Rotation: 0
+  foreArm_R_Rotation: 0
+  arm_L_Rotation: 0
+  foreArm_L_Rotation: 0
+  arm_L_Index: 0
+  foreArm_L_Index: 0
+  arm_R_Index: 0
+  foreArm_R_Index: 0
+  thigh_L_Index: 0
+  thigh_R_Index: 0
+  calf_R_Index: 0
+  calf_L_Index: 0
+  arm_L_Line: {fileID: 0}
+  foreArm_L_Line: {fileID: 0}
+  foreArm_R_Line: {fileID: 0}
+  arm_R_Line: {fileID: 0}
+  calf_R_Line: {fileID: 0}
+  calf_L_Line: {fileID: 0}
+  thigh_R_Line: {fileID: 0}
+  thigh_L_Line: {fileID: 0}
+--- !u!1001 &1219669950743836959
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6794978574611549760}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+      propertyPath: m_Name
+      value: BountyHunterRIO2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+--- !u!1 &781621337250600770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7334741821555347875, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+  m_PrefabInstance: {fileID: 1219669950743836959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1603821147083412863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 480980873393957984, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+  m_PrefabInstance: {fileID: 1219669950743836959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1686486077028736756 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+  m_PrefabInstance: {fileID: 1219669950743836959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2158022762555494438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 945743962379790649, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+  m_PrefabInstance: {fileID: 1219669950743836959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2727123931050229839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3834132971535382864, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+  m_PrefabInstance: {fileID: 1219669950743836959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3473324345402682148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6854873025339420101, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+  m_PrefabInstance: {fileID: 1219669950743836959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5825402158205663780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4595115013925403845, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+  m_PrefabInstance: {fileID: 1219669950743836959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6580069757812072703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3766071625777145376, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+  m_PrefabInstance: {fileID: 1219669950743836959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7033851694860167263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8174140538269110592, guid: c207202fdaf327549a88f878a897e0ab, type: 3}
+  m_PrefabInstance: {fileID: 1219669950743836959}
+  m_PrefabAsset: {fileID: 0}
