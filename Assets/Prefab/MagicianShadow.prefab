@@ -69,8 +69,14 @@ MonoBehaviour:
   thigh_R_Rotation: 0
   calf_L_Rotation: 0
   calf_R_Rotation: 0
-  angles: []
-  legAngles: []
+  angles:
+  - -135
+  - -90
+  - -45
+  legAngles:
+  - -180
+  - -135
+  - -90
 --- !u!1 &139398152452003250
 GameObject:
   m_ObjectHideFlags: 0

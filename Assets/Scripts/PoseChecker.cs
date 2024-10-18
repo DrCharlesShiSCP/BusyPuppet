@@ -4,50 +4,61 @@ using UnityEngine;
 
 public class PoseChecker : MonoBehaviour
 {
-    public PuppetControl puppet; 
-    public ShadowControl shadow;
-
-    public GameObject dancer;
-    public GameObject puppetOBJ;
-
+    public PuppetRandomizer puppetRandomizer; // Reference to the randomizer script
+    public GameObject dancer; // Dancer object
     public AudioClip DanceClip;
     public AudioSource DanceSource;
     private bool hasMatched = false;
+
     void Start()
     {
+        puppetRandomizer = FindObjectOfType<PuppetRandomizer>();
         hasMatched = false;
-        puppetOBJ.SetActive(true);
         dancer.SetActive(false);
-        puppet = FindObjectOfType<PuppetControl>();
-        shadow = FindObjectOfType<ShadowControl>();
-    }
-    void Update()
-    {
-        if (CheckMatch() && !hasMatched)
+
+        // Ensure PuppetRandomizer is linked
+        if (puppetRandomizer == null)
         {
-            
-            StartCoroutine(CheckMatchDelay());
+            puppetRandomizer = FindObjectOfType<PuppetRandomizer>();
         }
     }
 
-    IEnumerator CheckMatchDelay()
+    void Update()
+    {
+        // Use the currently active puppet and shadow from the PuppetRandomizer
+        PuppetControl puppet = puppetRandomizer.puppetModels[puppetRandomizer.currentRoundIndex].GetComponent<PuppetControl>();
+        ShadowControl shadow = puppetRandomizer.puppetShadows[puppetRandomizer.currentRoundIndex].GetComponent<ShadowControl>();
+
+        if (CheckMatch(puppet, shadow) && !hasMatched)
+        {
+            StartCoroutine(CheckMatchDelay(puppetRandomizer.puppetModels[puppetRandomizer.currentRoundIndex]));
+        }
+    }
+
+    IEnumerator CheckMatchDelay(GameObject activePuppet)
     {
         hasMatched = true;
-        Debug.Log("×öµÄºÃ£¡");
+        Debug.Log("Good job!");
         yield return new WaitForSeconds(1);
-        puppetOBJ.SetActive(false);
+
+        // Deactivate the active puppet model
+        activePuppet.SetActive(false);
+
+        // Activate the dancer
         dancer.SetActive(true);
         DanceSource.PlayOneShot(DanceClip);
         GameRoot.GetInstance().WIn();
     }
-    bool CheckMatch()
+
+    bool CheckMatch(PuppetControl puppet, ShadowControl shadow)
     {
+        // Check upper body match
         bool leftArmMatch = Mathf.Approximately(puppet.arm_L_Rotation, shadow.arm_L_Rotation);
         bool leftForearmMatch = Mathf.Approximately(puppet.foreArm_L_Rotation, shadow.foreArm_L_Rotation);
         bool rightArmMatch = Mathf.Approximately(puppet.arm_R_Rotation, shadow.arm_R_Rotation);
         bool rightForearmMatch = Mathf.Approximately(puppet.foreArm_R_Rotation, shadow.foreArm_R_Rotation);
 
-        // Lower body match
+        // Check lower body match
         bool leftThighMatch = Mathf.Approximately(puppet.thigh_L_Rotation, shadow.thigh_L_Rotation);
         bool rightThighMatch = Mathf.Approximately(puppet.thigh_R_Rotation, shadow.thigh_R_Rotation);
         bool leftCalfMatch = Mathf.Approximately(puppet.calf_L_Rotation, shadow.calf_L_Rotation);
