@@ -8,8 +8,10 @@ public class PoseChecker : MonoBehaviour
     public ShadowControl shadow;
 
     public GameObject dancer;
+    
     public GameObject puppetOBJ;
 
+    
     public AudioClip DanceClip;
     public AudioSource DanceSource;
     private bool hasMatched = false;

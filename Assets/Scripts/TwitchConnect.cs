@@ -108,7 +108,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Raise Left Arm" || msg == "raise left arm" || msg == "raiseleftarm" ||
                     msg == "Raise left arm" || msg == "Raise Left arm" || msg == "Raiseleftarm" ||
                     msg == "Raise L_A" || msg == "Raise L A" || msg == "Raise l a" || msg == "raise la" ||
-                    msg == "up la" || msg == "up LA")
+                    msg == "up la" || msg == "up LA" || msg == "up L a")
                 {
                     Debug.Log("Raise Left Arm");
                     puppetControl.RaiseLeftArm();
@@ -117,7 +117,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Lower Left Arm" || msg == "lower left arm" || msg == "lowerleftarm" ||
                      msg == "Lower left arm" || msg == "Lower Left arm" || msg == "Lowerleftarm" ||
                       msg == "Lower L_A" || msg == "Lower L A" || msg == "Lower l a" || msg == "lower la" ||
-                      msg == "down la" || msg == "down LA")
+                      msg == "down la" || msg == "down LA" || msg == "down L a")
                 {
                     Debug.Log("Lower Left Arm");
                     puppetControl.LowerLeftArm();
@@ -126,7 +126,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Raise Left Forearm" || msg == "raise left forearm" || msg == "raiseleftforearm" ||
                     msg == "Raise left forearm" || msg == "Raise Left forearm" || msg == "Raiseleftforearm" ||
                     msg == "Raise L_F" || msg == "Raise L F" || msg == "Raise l f" || msg == "raise lf" ||
-                    msg == "up lf" || msg == "up LF")
+                    msg == "up lf" || msg == "up LF" || msg == "up L f")
                 {
                     Debug.Log("Raise Left Forearm");
                     puppetControl.RaiseLeftForearm();
@@ -135,7 +135,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Lower Left Forearm" || msg == "lower left forearm" || msg == "lowerleftforearm" ||
                     msg == "Lower left forearm" || msg == "Lower Left forearm" || msg == "Lowerleftforearm" ||
                     msg == "Lower L_F" || msg == "Lower L F" || msg == "Lower l f" || msg == "lower lf" ||
-                    msg == "down lf" || msg == "down LF")
+                    msg == "down lf" || msg == "down LF" || msg == "down L f")
                 {
                     Debug.Log("Lower Left Forearm");
                     puppetControl.LowerLeftForearm();
@@ -144,7 +144,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Raise Right Forearm" || msg == "raise right forearm" || msg == "raiserightforearm" ||
                     msg == "Raise right forearm" || msg == "Raise Right forearm" || msg == "Raiserightforearm" ||
                     msg == "Raise R_F" || msg == "Raise R F" || msg == "Raise r f" || msg == "raise rf" ||
-                    msg == "up rf" || msg == "up RF")
+                    msg == "up rf" || msg == "up RF" || msg == "up R f")
                 {
                     Debug.Log("Raise Right Forearm");
                     puppetControl.RaiseRightForearm();
@@ -153,7 +153,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Lower Right Forearm" || msg == "lower right forearm" || msg == "lowerrightforearm" ||
                     msg == "Lower right forearm" || msg == "Lower Right forearm" || msg == "Lowerrightforearm" ||
                     msg == "Lower R_F" || msg == "Lower R F" || msg == "Lower r f" || msg == "lower rf" ||
-                    msg == "down rf" || msg == "down RF")
+                    msg == "down rf" || msg == "down RF" || msg == "down R f")
                 {
                     Debug.Log("Lower Right Forearm");
                     puppetControl.LowerRightForearm();
@@ -162,7 +162,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Raise Right Arm" || msg == "raise right arm" || msg == "raiserightarm" ||
                     msg == "Raise right arm" || msg == "Raise Right arm" || msg == "Raiserightarm" ||
                     msg == "Raise R_A" || msg == "Raise R A" || msg == "Raise r a" || msg == "raise ra" ||
-                    msg == "up ra" || msg == "up RA")
+                    msg == "up ra" || msg == "up RA" || msg == "up R a")
                 {
                     Debug.Log("Raise Right Arm");
                     puppetControl.RaiseRightArm();
@@ -171,7 +171,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Lower Right Arm" || msg == "lower right arm" || msg == "lowerrightarm" ||
                     msg == "Lower right arm" || msg == "Lower Right arm" || msg == "Lowerrightarm" ||
                     msg == "Lower R_A" || msg == "Lower R A" || msg == "Lower r a" || msg == "lower ra" ||
-                    msg == "down ra" || msg == "down RA")
+                    msg == "down ra" || msg == "down RA" || msg == "down R a")
                 {
                     Debug.Log("Lower Right Arm");
                     puppetControl.LowerRightArm();
@@ -180,7 +180,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Raise Left Thigh" || msg == "raise left thigh" || msg == "raiseleftthigh" ||
                     msg == "Raise left thigh" || msg == "Raise Left thigh" || msg == "Raiseleftthigh" ||
                     msg == "Raise L_T" || msg == "Raise L T" || msg == "Raise l t" || msg == "raise lt" ||
-                    msg == "up lt" || msg == "up LT")
+                    msg == "up lt" || msg == "up LT" || msg == "up L t")
                 {
                     Debug.Log("Raise Left Thigh");
                     puppetControl.RaiseLeftThigh();
@@ -189,7 +189,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Lower Left Thigh" || msg == "lower left thigh" || msg == "lowerleftthigh" ||
                     msg == "Lower left thigh" || msg == "Lower Left thigh" || msg == "Lowerleftthigh" ||
                     msg == "Lower L_T" || msg == "Lower L T" || msg == "Lower l t" || msg == "lower lt" ||
-                    msg == "down lt" || msg == "down LT")
+                    msg == "down lt" || msg == "down LT" || msg == "down L t")
                 {
                     Debug.Log("Lower Left Thigh");
                     puppetControl.LowerLeftThigh();
@@ -198,7 +198,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Raise Right Thigh" || msg == "raise right thigh" || msg == "raiserightthigh" ||
                     msg == "Raise right thigh" || msg == "Raise Right thigh" || msg == "Raiserightthigh" ||
                     msg == "Raise R_T" || msg == "Raise R T" || msg == "Raise r t" || msg == "raise rt" ||
-                    msg == "up rt" || msg == "up RT")
+                    msg == "up rt" || msg == "up RT" || msg == "up R t")
                 {
                     Debug.Log("Raise Right Thigh");
                     puppetControl.RaiseRightThigh();
@@ -207,7 +207,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Lower Right Thigh" || msg == "lower right thigh" || msg == "lowerrightthigh" ||
                     msg == "Lower right thigh" || msg == "Lower Right thigh" || msg == "Lowerrightthigh" ||
                     msg == "Lower R_T" || msg == "Lower R T" || msg == "Lower r t" || msg == "lower rt" ||
-                    msg == "down rt" || msg == "down RT")
+                    msg == "down rt" || msg == "down RT" || msg == "down R t")
                 {
                     Debug.Log("Lower Right Thigh");
                     puppetControl.LowerRightThigh();
@@ -216,7 +216,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Raise Left Calf" || msg == "raise left calf" || msg == "raiseleftcalf" ||
                     msg == "Raise left calf" || msg == "Raise Left calf" || msg == "Raiseleftcalf" ||
                     msg == "Raise L_C" || msg == "Raise L C" || msg == "Raise l c" || msg == "raise lc" ||
-                    msg == "up lc" || msg == "up LC")
+                    msg == "up lc" || msg == "up LC" || msg == "up L c")
                 {
                     Debug.Log("Raise Left Calf");
                     puppetControl.RaiseLeftCalf();
@@ -225,7 +225,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Lower Left Calf" || msg == "lower left calf" || msg == "lowerleftcalf" ||
                     msg == "Lower left calf" || msg == "Lower Left calf" || msg == "Lowerleftcalf" ||
                     msg == "Lower L_C" || msg == "Lower L C" || msg == "Lower l c" || msg == "lower lc" ||
-                    msg == "down lc" || msg == "down LC")
+                    msg == "down lc" || msg == "down LC" || msg == "down L c")
                 {
                     Debug.Log("Lower Left Calf");
                     puppetControl.LowerLeftCalf();
@@ -234,7 +234,7 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Raise Right Calf" || msg == "raise right calf" || msg == "raiserightcalf" ||
                     msg == "Raise right calf" || msg == "Raise Right calf" || msg == "Raiserightcalf" ||
                     msg == "Raise R_C" || msg == "Raise R C" || msg == "Raise r c" || msg == "raise rc" ||
-                    msg == "up rc" || msg == "up RC")
+                    msg == "up rc" || msg == "up RC" || msg == "up R c")
                 {
                     Debug.Log("Raise Right Calf");
                     puppetControl.RaiseRightCalf();
@@ -243,14 +243,15 @@ public class TwitchConnect : MonoBehaviour
                 if (msg == "Lower Right Calf" || msg == "lower right calf" || msg == "lowerrightcalf" ||
                     msg == "Lower right calf" || msg == "Lower Right calf" || msg == "Lowerrightcalf" ||
                     msg == "Lower R_C" || msg == "Lower R C" || msg == "Lower r c" || msg == "lower rc" ||
-                    msg == "down rc" || msg == "down RC")
+                    msg == "down rc" || msg == "down RC" || msg == "down R c")
                 {
                     Debug.Log("Lower Right Calf");
                     puppetControl.LowerRightCalf();
                 }
-                if (msg == "reset")
+                if (msg == "reset"|| msg == "Reset" || msg == "RESET")
                 {
-                    
+                    StaticValue.completedTurn = 0;
+                    StaticValue.currentTurn = 0;
                     SceneManager.LoadScene("PuppetTestScene");
                 }
             }

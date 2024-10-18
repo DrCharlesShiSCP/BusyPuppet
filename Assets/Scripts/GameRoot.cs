@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameRoot : MonoBehaviour
 {
@@ -21,7 +22,18 @@ public class GameRoot : MonoBehaviour
     public GameObject CorrectUI;
     public GameObject resultUI;
 
-    
+
+    public List<Mesh> meshes = new List<Mesh>();
+    public List<Material> materials = new List<Material>();
+
+    public GameObject puppetMeshObj;
+    public GameObject puppetShadowGameObj;
+    public GameObject puppetDancingGameObj;
+
+    public GameObject controlCubes;
+
+    public AudioClip failSFX;
+    public AudioSource DanceSource;
     public static GameRoot GetInstance()
     {
         if (instance == null)
@@ -49,13 +61,26 @@ public class GameRoot : MonoBehaviour
     }
     void Start()
     {
+        int index  = Random.Range(0,meshes.Count);
+
+        puppetMeshObj.GetComponent<SkinnedMeshRenderer>().sharedMesh = meshes[index];
+
+        puppetMeshObj.GetComponent<SkinnedMeshRenderer>().material= materials[index];
+
+        puppetShadowGameObj.GetComponent<SkinnedMeshRenderer>().sharedMesh = meshes[index];
+
+        puppetDancingGameObj.GetComponent<SkinnedMeshRenderer>().sharedMesh = meshes[index];
+        puppetDancingGameObj.GetComponent<SkinnedMeshRenderer>().material = materials[index];
+
         if (StaticValue.currentTurn < 10)
         {
             StaticValue.currentTurn++;
         }
+        resultUI.SetActive(false); 
         CorrectUI.SetActive(false);
         TimeCountUI.SetActive(true);
         TimeUp.SetActive(false);
+        controlCubes.SetActive(true);
         currentTime = roundTime;
     }
 
@@ -64,6 +89,7 @@ public class GameRoot : MonoBehaviour
     {
         TimeCounter();
         CheckTime();
+        ResetTheGameWithKey();
     }
 
     public void TimeCounter()
@@ -94,7 +120,15 @@ public class GameRoot : MonoBehaviour
             {
                 if (currentTime < 0)
                 {
+                    
+                    int currentHighestScore = PlayerPrefs.GetInt("HighScore", 0);
+                    if (StaticValue.completedTurn > currentHighestScore)
+                    {
+                        PlayerPrefs.SetInt("HighScore", StaticValue.completedTurn);
+                        PlayerPrefs.Save();
+                    }
                     resultUI.SetActive(true);
+
                 }
             }
             
@@ -107,7 +141,7 @@ public class GameRoot : MonoBehaviour
         gameEnd= true;
         TimeUp.SetActive(true);
         TimeCountUI.SetActive(false);
-        
+        DanceSource.PlayOneShot(failSFX);
         currentTime = 3f;
         yield return new WaitForSeconds(1f);
         while (currentTime > 0)
@@ -130,6 +164,7 @@ public class GameRoot : MonoBehaviour
         gameEnd = true;
         CorrectUI.SetActive(true);
         TimeCountUI.SetActive(false);
+        controlCubes.SetActive(false);
         currentTime = 3f;
         yield return new WaitForSeconds(2f);
         while (currentTime > 0)
@@ -140,5 +175,15 @@ public class GameRoot : MonoBehaviour
         }
         StaticValue.completedTurn++;
         SceneManager.LoadScene("PuppetTestScene");
+    }
+
+    public void ResetTheGameWithKey()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            StaticValue.completedTurn = 0;
+            StaticValue.currentTurn = 0;
+            SceneManager.LoadScene("PuppetTestScene");
+        }
     }
 }
