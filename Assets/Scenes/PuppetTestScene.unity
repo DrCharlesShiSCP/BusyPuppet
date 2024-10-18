@@ -4322,7 +4322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c636ce382bf4b934993e6b438cda93c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundTime: 10
+  roundTime: 75
   currentTime: 0
   gameEnd: 0
   TimeCountUI: {fileID: 780015460}
@@ -8549,7 +8549,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puppetRandomizer: {fileID: 1372981548}
   dancer: {fileID: 1511218186}
-  puppetOBJ: {fileID: 1378849891}
   DanceClip: {fileID: 8300000, guid: d3275543f0521e447abcee2ebc65a699, type: 3}
   DanceSource: {fileID: 1848697048}
 --- !u!82 &1848697048
