@@ -15,6 +15,7 @@ public class TwitchConnect : MonoBehaviour
     public UnityEvent<string, string> OnChatMessage;
     //public ShitpostTest shitpostTest;
     PuppetControl puppetControl;
+    ShitpostTest shitpostTest;
 
     TcpClient Twitch;
     StreamReader Reader;
@@ -34,10 +35,11 @@ public class TwitchConnect : MonoBehaviour
 
     public float pingCounter;
 
-    private Dictionary<string, int> userCommandCounts = new Dictionary<string, int>();
+    //private Dictionary<string, int> userCommandCounts = new Dictionary<string, int>();
     private List<string> recentCommands = new List<string>();
     private void Start()
     {
+        //DontDestroyOnLoad(this);
         puppetControl = FindObjectOfType<PuppetControl>();
     }
     private void ConnectToTwitch()
@@ -89,13 +91,13 @@ public class TwitchConnect : MonoBehaviour
                 splitPoint = message.IndexOf(":", 1);   //so everything after that colon is the message that the user typed... in this case, 'hello world'
                 string msg = message.Substring(splitPoint + 1);    //anything that's passed that colon, bring it in to that string
 
-                if (userCommandCounts.ContainsKey(chatter))
+                if (StaticValue.userCommandCounts.ContainsKey(chatter))
                 {
-                    userCommandCounts[chatter]++;
+                    StaticValue.userCommandCounts[chatter]++;
                 }
                 else
                 {
-                    userCommandCounts[chatter] = 1;
+                    StaticValue.userCommandCounts[chatter] = 1;
                 }
                 //This UnityEvent is what will look at the messager, and their message - then it will invoke a method from another script that we assign! 
                 //You can assign the method it invokes in the inspector.
@@ -103,7 +105,7 @@ public class TwitchConnect : MonoBehaviour
                 UpdateRecentCommands($"{chatter}: {msg}");
                 OnChatMessage?.Invoke(chatter, msg);
                 print(msg);
-
+                shitpostTest = FindObjectOfType<ShitpostTest>();
 
                 if (msg == "Raise Left Arm" || msg == "raise left arm" || msg == "raiseleftarm" ||
                     msg == "Raise left arm" || msg == "Raise Left arm" || msg == "Raiseleftarm" ||
@@ -253,14 +255,34 @@ public class TwitchConnect : MonoBehaviour
                     StaticValue.completedTurn = 0;
                     StaticValue.currentTurn = 0;
                     SceneManager.LoadScene("PuppetTestScene");
+                    StaticValue.userCommandCounts.Clear();
+                }
+                if (msg == "drip")
+                {
+                    shitpostTest.drip();
+                }
+                if(msg == "john")
+                {
+                    shitpostTest.bingChiling();
+                }
+                if(msg == "amongus")
+                {
+                    shitpostTest.amongus();
+                }
+                if(msg == "cowboy")
+                {
+                    shitpostTest.slumberParty();
+                }
+                if(msg == "bruh")
+                {
+                    shitpostTest.aneurysm();
                 }
             }
         }
     }
     void UpdateLeaderboard()
     {
-        // Sort the userCommandCounts dictionary by command count in descending order and take the top 5
-        var topUsers = userCommandCounts.OrderByDescending(x => x.Value).Take(5);
+        var topUsers = StaticValue.userCommandCounts.OrderByDescending(x => x.Value).Take(5);
 
         // Format the leaderboard text
         string leaderboard = "Top 5 Command Users:\n";
