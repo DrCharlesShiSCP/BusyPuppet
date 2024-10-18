@@ -54,6 +54,8 @@ public class PuppetControl : MonoBehaviour
     public LinerenderRope thigh_R_Line;
     public LinerenderRope thigh_L_Line;
     #endregion
+
+    
     // Start is called before the first frame update
     void Start()
     {
